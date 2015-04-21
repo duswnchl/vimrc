@@ -6,6 +6,10 @@ if [ ! -d "$HOME/.vim/after" ]; then
     ln -s $PWD/after $HOME/.vim/after
 fi
 
+if [ ! -d "$PWD/after/ftdetect" ]; then
+    mkdir $PWD/after/ftdetect
+fi
+
 ln -s $HOME/.vim/bundle/wmgraphviz.vim/ftdetect/dot.vim $PWD/after/ftdetect/dot.vim
 ln -s $HOME/.vim/bundle/wmgraphviz.vim/ftplugin/dot.vim $PWD/after/ftplugin/dot.vim
 
