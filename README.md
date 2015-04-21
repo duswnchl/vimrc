@@ -10,7 +10,7 @@ My Vim configuration
 
 1. Set up vimrc with symbolic link:
 ```bash
-    $ git clone git clone https://github.com/duswnchl/vimrc.git ~/Package
+    $ git clone https://github.com/duswnchl/vimrc.git ~/Package
     $ ln -s $HOME/Package/vimrc/vimrc ~/.vimrc
 ```
 2. Set up [Vundle](https://github.com/gmarik/Vundle.vim)
@@ -18,6 +18,10 @@ My Vim configuration
 3. Plugin Installation
 
 Launch `vim` and run `:PluginInstall`
+
+4. Make symbolic link for file type plugin
+
+`makesyms`
 
 ## Additional
 
