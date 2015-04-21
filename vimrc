@@ -1,8 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""
 "           Vundle Settings            "
 """"""""""""""""""""""""""""""""""'"""""
-set nocompatible " be iMproved
-filetype off " required!
+set nocompatible               " be iMproved
+filetype off                   " required!
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -32,19 +32,21 @@ Plugin 'wincent/command-t'
 Plugin 'grep.vim'
 Plugin 'https://github.com/aklt/plantuml-syntax.git'
 Plugin 'https://github.com/wannesm/wmgraphviz.vim.git'
-Plugin 'https://github.com/int3/vim-extradite.git'
 Plugin 'wting/rust.vim'
 Plugin 'auto-pairs'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'git://github.com/will133/vim-dirdiff'
+Plugin 'ShowTrailingWhitespace'
+Plugin 'lsdr/monokai'
 
 call vundle#end()
-filetype plugin indent on " required!
+filetype plugin indent on     " required!
 "
 " Brief help
-" :PluginList - list configured bundles
-" :PluginInstall(!) - install(update) bundles
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
 " :PluginSearch(!) foo - search(or refresh cache first) for foo
-" :PluginClean(!) - confirm(or auto-approve) removal of unused bundles
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " see :h vundle for more details or wiki for FAQ
 
@@ -60,29 +62,18 @@ set modifiable
 " Color Scheme
 colorscheme monokai
 
-" Similar with Git
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-
 set backspace+=start,eol,indent
 
 """"""""""""""""""""""""""""""""""""""""
-"               Git                    "
-""""""""""""""""""""""""""""""""""""""'"
-let g:extradite_width = 150
-let g:extradite_showhash = 1
-map <S-L> :Extradite!<CR>
-
-""""""""""""""""""""""""""""""""""""""""
-"             Graphviz                 "
+"              Graphviz                "
 """"""""""""""""""""""""""""""""""""""'"
 let g:WMGraphviz_output = 'png'
 
 """"""""""""""""""""""""""""""""""""""""
-"              Grep                    "
+"                Grep                  "
 """"""""""""""""""""""""""""""""""""""'"
 if executable('ag')
-let Grep_Path = '/usr/bin/ag'
+    let Grep_Path = '/usr/bin/ag'
 endif
 
 let Grep_Skip_Files='ChangeLog* tags *.bak *.o *.order *.mm *.html *.txt'
@@ -91,20 +82,19 @@ let Grep_Skip_Files='ChangeLog* tags *.bak *.o *.order *.mm *.html *.txt'
 nmap <C-G> yiw:Rgrep <C-R>"<CR>
 
 """"""""""""""""""""""""""""""""""""""""
-"            Command-t                 "
+"              Command-t               "
 """"""""""""""""""""""""""""""""""""""'"
-let g:CommandTMaxFiles = 500000
+let g:CommandTMaxFiles = 1000000
 let g:CommandTMaxDepth = 30
-let g:CommandTFileScanner = "git"
-let g:CommandTMaxCachedDirectories = 10
+let g:CommandTFileScanner = "watchman"
 
 """"""""""""""""""""""""""""""""""""""""
-"    Switch between source/header      "
+"     Switch between source/header     "
 """"""""""""""""""""""""""""""""""""""'"
 map <C-A> :A<CR>
 
 """"""""""""""""""""""""""""""""""""""""
-"     Vim like a source insight        "
+"       Vim like a source insight      "
 """"""""""""""""""""""""""""""""""'"""""
 nmap <F6> :TlistToggle<CR>
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
@@ -134,11 +124,3 @@ map <F3> :tprevious^M
 nmap <F9> :TrinityToggleAll<CR>
 
 syntax on
-
-""""""""""""""""""""""""""""""""""""""""
-"            Do not use                "
-""""""""""""""""""""""""""""""""""'"""""
-" Plugin 'FuzzyFinder'
-" map <Leader>ff <ESC>:FufCoverageFile!<CR>
-" map <Leader>fd <ESC>:FufDir!<CR>
-
