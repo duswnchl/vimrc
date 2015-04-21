@@ -9,7 +9,7 @@ My Vim configuration
 ## Installation
 
 1. Set up vimrc with symbolic link:
-```bash
+```
     $ git clone https://github.com/duswnchl/vimrc.git ~/Package
     $ ln -s $HOME/Package/vimrc/vimrc ~/.vimrc
 ```
