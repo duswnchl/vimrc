@@ -16,11 +16,18 @@ My Vim configuration
 
 2. Set up [Vundle](https://github.com/gmarik/Vundle.vim)
 
-3. Plugin Installation
+3. Install plugin with Vundle
 
     Launch `vim` and run `:PluginInstall`
 
-4. Make symbolic link for file type plugin
+4. Install [command-t](https://github.com/wincent/Command-T)
+    ```
+    cd ~/.vim/bundle/command-t/ruby/command-t
+    ruby extconf.rb
+    make
+    ```
+
+5. Make symbolic link for file type plugin
 
     `$ ./makesyms`
 
