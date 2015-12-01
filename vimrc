@@ -23,7 +23,7 @@ Plugin 'a.vim'
 Plugin 'taglist.vim'
 Plugin 'The-NERD-tree'
 Plugin 'The-NERD-Commenter'
-Plugin 'http://github.com/vim-scripts/SrcExpl'
+Plugin 'https://github.com/wesleyche/SrcExpl.git'
 Plugin 'https://github.com/vim-scripts/Trinity.git'
 Plugin 'https://github.com/kien/ctrlp.vim.git'
 Plugin 'AutoComplPop'
@@ -32,12 +32,15 @@ Plugin 'wincent/command-t'
 Plugin 'grep.vim'
 Plugin 'https://github.com/aklt/plantuml-syntax.git'
 Plugin 'https://github.com/wannesm/wmgraphviz.vim.git'
-Plugin 'wting/rust.vim'
+Plugin 'rust-lang/rust.vim'
 Plugin 'auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'git://github.com/will133/vim-dirdiff'
 Plugin 'ShowTrailingWhitespace'
 Plugin 'lsdr/monokai'
+Plugin 'bling/vim-airline'
+Plugin 'Rykka/InstantRst'
+Plugin 'https://github.com/alvan/vim-closetag.git'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -60,9 +63,16 @@ set expandtab
 set modifiable
 
 " Color Scheme
+set laststatus=2
 colorscheme monokai
 
 set backspace+=start,eol,indent
+
+" Remove white trailing
+nnoremap <Leader>rtw :%s/\s\+$//e<CR>"
+
+" AutoClose for html
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
 
 """"""""""""""""""""""""""""""""""""""""
 "              Graphviz                "
