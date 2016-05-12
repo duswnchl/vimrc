@@ -10,8 +10,8 @@ if [ ! -d "$PWD/after/ftdetect" ]; then
     mkdir $PWD/after/ftdetect
 fi
 
-ln -s $HOME/.vim/bundle/wmgraphviz.vim/ftdetect/dot.vim $PWD/after/ftdetect/dot.vim
-ln -s $HOME/.vim/bundle/wmgraphviz.vim/ftplugin/dot.vim $PWD/after/ftplugin/dot.vim
+#ln -s $HOME/.vim/bundle/wmgraphviz.vim/ftdetect/dot.vim $PWD/after/ftdetect/dot.vim
+#ln -s $HOME/.vim/bundle/wmgraphviz.vim/ftplugin/dot.vim $PWD/after/ftplugin/dot.vim
 
-ln -s $HOME/.vim/bundle/plantuml-syntax/ftdetect/plantuml.vim $PWD/after/ftdetect/plantuml.vim
-ln -s $HOME/.vim/bundle/plantuml-syntax/ftplugin/plantuml.vim $PWD/after/ftplugin/plantuml.vim
+#ln -s $HOME/.vim/bundle/plantuml-syntax/ftdetect/plantuml.vim $PWD/after/ftdetect/plantuml.vim
+#ln -s $HOME/.vim/bundle/plantuml-syntax/ftplugin/plantuml.vim $PWD/after/ftplugin/plantuml.vim

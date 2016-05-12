@@ -27,20 +27,17 @@ Plugin 'https://github.com/wesleyche/SrcExpl.git'
 Plugin 'https://github.com/vim-scripts/Trinity.git'
 Plugin 'https://github.com/kien/ctrlp.vim.git'
 Plugin 'AutoComplPop'
-Plugin 'https://github.com/sickill/vim-monokai.git'
 Plugin 'wincent/command-t'
 Plugin 'grep.vim'
-Plugin 'https://github.com/aklt/plantuml-syntax.git'
-Plugin 'https://github.com/wannesm/wmgraphviz.vim.git'
 Plugin 'rust-lang/rust.vim'
 Plugin 'auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'git://github.com/will133/vim-dirdiff'
 Plugin 'ShowTrailingWhitespace'
-Plugin 'lsdr/monokai'
-Plugin 'bling/vim-airline'
 Plugin 'Rykka/InstantRst'
 Plugin 'https://github.com/alvan/vim-closetag.git'
+Plugin 'itchyny/lightline.vim'
+Plugin 'jacoborus/tender'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -61,10 +58,12 @@ set ic
 set hlsearch
 set expandtab
 set modifiable
+set exrc
+set secure
 
 " Color Scheme
-set laststatus=2
-colorscheme monokai
+set t_Co=256
+colorscheme tender
 
 set backspace+=start,eol,indent
 
@@ -73,11 +72,6 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>"
 
 " AutoClose for html
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
-
-""""""""""""""""""""""""""""""""""""""""
-"              Graphviz                "
-""""""""""""""""""""""""""""""""""""""'"
-let g:WMGraphviz_output = 'png'
 
 """"""""""""""""""""""""""""""""""""""""
 "                Grep                  "
@@ -104,6 +98,26 @@ let g:CommandTFileScanner = "watchman"
 map <C-A> :A<CR>
 
 """"""""""""""""""""""""""""""""""""""""
+"              lightline               "
+""""""""""""""""""""""""""""""""""""""'"
+set noshowmode
+set laststatus=2
+let g:lightline = {
+                    \ 'colorscheme': 'tender',
+                    \ 'active': {
+                    \   'left': [ [ 'mode' ],
+                    \             [ 'fugitive' ],
+                    \             [ 'filename', 'modified' ] ]
+                    \ },
+                    \ 'component' : {
+                    \       'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+                    \ },
+                    \ 'component_visible_condition': {
+                    \       'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+                    \ }
+                    \ }
+
+""""""""""""""""""""""""""""""""""""""""
 "       Vim like a source insight      "
 """"""""""""""""""""""""""""""""""'"""""
 nmap <F6> :TlistToggle<CR>
@@ -114,7 +128,6 @@ let Tlist_Auto_Open = 0
 let Tlist_Use_Left_Window = 1
 
 nmap <F7> :NERDTreeToggle<CR>
-let NERDTreeWinPos = "right"
 
 nmap <F8> :SrcExplToggle<CR>
 
