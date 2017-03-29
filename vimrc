@@ -37,7 +37,8 @@ Plugin 'ShowTrailingWhitespace'
 Plugin 'Rykka/InstantRst'
 Plugin 'https://github.com/alvan/vim-closetag.git'
 Plugin 'itchyny/lightline.vim'
-Plugin 'jacoborus/tender'
+Plugin 'jacoborus/tender.vim'
+Plugin 'jlanzarotta/bufexplorer'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -80,7 +81,7 @@ if executable('ag')
     let Grep_Path = '/usr/bin/ag'
 endif
 
-let Grep_Skip_Files='ChangeLog* tags *.bak *.o *.order *.mm *.html *.txt'
+let Grep_Skip_Files='ChangeLog* tags *.bak *.o *.order *.mm *.txt'
 
 " Search a word under the cursor
 nmap <C-G> yiw:Rgrep <C-R>"<CR>
@@ -90,7 +91,8 @@ nmap <C-G> yiw:Rgrep <C-R>"<CR>
 """"""""""""""""""""""""""""""""""""""'"
 let g:CommandTMaxFiles = 1000000
 let g:CommandTMaxDepth = 30
-let g:CommandTFileScanner = "watchman"
+let g:CommandTInputDebounce = 50
+let g:CommandTFileScanner = 'watchman'
 
 """"""""""""""""""""""""""""""""""""""""
 "     Switch between source/header     "
