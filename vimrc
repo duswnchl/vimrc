@@ -38,7 +38,6 @@ Plugin 'Rykka/InstantRst'
 Plugin 'https://github.com/alvan/vim-closetag.git'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jacoborus/tender.vim'
-Plugin 'jlanzarotta/bufexplorer'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -81,7 +80,7 @@ if executable('ag')
     let Grep_Path = '/usr/bin/ag'
 endif
 
-let Grep_Skip_Files='ChangeLog* tags *.bak *.o *.order *.mm *.txt'
+let Grep_Skip_Files='ChangeLog* tags *.bak *.o *.order *.mm'
 
 " Search a word under the cursor
 nmap <C-G> yiw:Rgrep <C-R>"<CR>
@@ -92,7 +91,7 @@ nmap <C-G> yiw:Rgrep <C-R>"<CR>
 let g:CommandTMaxFiles = 1000000
 let g:CommandTMaxDepth = 30
 let g:CommandTInputDebounce = 50
-let g:CommandTFileScanner = 'watchman'
+let g:CommandTFileScanner = 'find'
 
 """"""""""""""""""""""""""""""""""""""""
 "     Switch between source/header     "
@@ -118,6 +117,25 @@ let g:lightline = {
                     \       'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
                     \ }
                     \ }
+
+""""""""""""""""""""""""""""""""""""""""
+"           Compelete hash             "
+""""""""""""""""""""""""""""""""""'"""""
+autocmd FileType bitbake :setlocal iskeyword+=.
+autocmd FileType bitbake :setlocal iskeyword-=_
+
+let g:remoteDict = {
+                     \ 'chromium53': 'ssh://yeonjoo.choi@wish.lge.com:29444/gpro/webos-pro/chromium53',
+                     \ 'appswitching-control-block': 'ssh://yeonjoo.choi@wish.lge.com:29444/we/wall/module/acb'
+                     \ }
+
+function! ReplaceToHash()
+    let l:pathForTags = g:remoteDict[expand("%:t:r")]." submissions/".expand("<cword>")
+    normal daw
+    return split(system("git ls-remote --tags ".pathForTags))[0]
+endfunction
+
+nmap <silent> <Leader>ch "=ReplaceToHash()<CR>P
 
 """"""""""""""""""""""""""""""""""""""""
 "       Vim like a source insight      "
