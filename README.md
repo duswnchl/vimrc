@@ -20,18 +20,19 @@ My Vim configuration
 
     Launch `vim` and run `:PluginInstall`
 
-4. Install [command-t](https://github.com/wincent/Command-T)
-    ```
-    cd ~/.vim/bundle/command-t/ruby/command-t
-    ruby extconf.rb
-    make
-    ```
+4. Branch 'vim-gutter' to 'nvim'
 
-5. Make symbolic link for file type plugin
+5. Install [command-t](https://github.com/wincent/Command-T)
+
+6. Make symbolic link for file type plugin
 
     `$ ./makesyms`
 
+## TODO
+
+* Add [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
+
 ## Additional
 
-* [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+* [vimawesome](https://vimawesome.com/)
 * [Watchman](https://facebook.github.io/watchman/)

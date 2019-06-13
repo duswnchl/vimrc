@@ -8,36 +8,28 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " My Bundles here:
-" original repos on github
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'tpope/vim-rails.git'
-" vim-scripts repos
-Plugin 'L9'
-" For YJCHOI
+"" IDE
 Plugin 'a.vim'
-Plugin 'taglist.vim'
-Plugin 'The-NERD-tree'
-Plugin 'The-NERD-Commenter'
-Plugin 'https://github.com/wesleyche/SrcExpl.git'
-Plugin 'https://github.com/vim-scripts/Trinity.git'
-Plugin 'https://github.com/kien/ctrlp.vim.git'
-Plugin 'AutoComplPop'
-Plugin 'wincent/command-t'
+Plugin 'alvan/vim-closetag'
+Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'grep.vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'auto-pairs'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'git://github.com/will133/vim-dirdiff'
-Plugin 'ShowTrailingWhitespace'
-Plugin 'Rykka/InstantRst'
-Plugin 'https://github.com/alvan/vim-closetag.git'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'taglist.vim'
+"Plugin 'valloric/youcompleteme'
+Plugin 'wincent/command-t'
+Plugin 'wesleyche/srcexpl'
+"" Git helper
+Plugin 'airblade/vim-gitgutter', {'pinned': 1}  " use stable branch 'nvim'
+Plugin 'tpope/vim-fugitive'
+"" Beautify
 Plugin 'itchyny/lightline.vim'
 Plugin 'jacoborus/tender.vim'
+"" Convinience
+Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -147,8 +139,6 @@ let Tlist_Exit_OnlyWindow = 0
 let Tlist_Auto_Open = 0
 let Tlist_Use_Left_Window = 1
 
-nmap <F7> :NERDTreeToggle<CR>
-
 nmap <F8> :SrcExplToggle<CR>
 
 nmap <C-H> <C-W>h
@@ -163,7 +153,5 @@ let g:SrcExpl_jumpKey = "<ENTER>"
 let g:SrcExpl_gobackKey = "<SPACE>"
 map <F2> :tnext^M
 map <F3> :tprevious^M
-
-nmap <F9> :TrinityToggleAll<CR>
 
 syntax on
