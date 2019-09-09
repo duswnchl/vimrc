@@ -17,8 +17,9 @@ Plugin 'alvan/vim-closetag'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'grep.vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'taglist.vim'
+Plugin 'shougo/neocomplete.vim'
 "Plugin 'valloric/youcompleteme'
 Plugin 'wincent/command-t'
 Plugin 'wesleyche/srcexpl'
@@ -83,7 +84,13 @@ nmap <C-G> yiw:Rgrep <C-R>"<CR>
 let g:CommandTMaxFiles = 1000000
 let g:CommandTMaxDepth = 30
 let g:CommandTInputDebounce = 50
-let g:CommandTFileScanner = 'find'
+let g:CommandTFileScanner = 'git'
+let g:CommandTMaxCachedDirectories = 0
+
+""""""""""""""""""""""""""""""""""""""""
+"            AutoComplete              "
+""""""""""""""""""""""""""""""""""""""'"
+let g:neocomplete#enable_at_startup = 1
 
 """"""""""""""""""""""""""""""""""""""""
 "     Switch between source/header     "
@@ -132,20 +139,15 @@ nmap <silent> <Leader>ch "=ReplaceToHash()<CR>P
 """"""""""""""""""""""""""""""""""""""""
 "       Vim like a source insight      "
 """"""""""""""""""""""""""""""""""'"""""
-nmap <F6> :TlistToggle<CR>
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_Inc_Winwidth = 0
-let Tlist_Exit_OnlyWindow = 0
-let Tlist_Auto_Open = 0
-let Tlist_Use_Left_Window = 1
+nmap <F6> :TagbarToggle<CR>
+let g:tagbar_width = 80
 
 nmap <F8> :SrcExplToggle<CR>
-
 nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
-let g:SrcExpl_winHeight = 8
+let g:SrcExpl_winHeight = 15
 let g:SrcExpl_refreshTime = 100
 let g:SrcExpl_isUpdateTags = 0
 

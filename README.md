@@ -4,7 +4,18 @@ My Vim configuration
 
 ## Prerequisite
 
-`+ruby` appears in `vim --version`
+`+ruby +lua` appears in `vim --version`
+
+./configure --prefix=/home/duswnchl/Package/vim/out \
+            --with-features=huge                    \
+            --enable-multibyte                      \
+            --enable-rubyinterp=yes                 \
+            --enable-python3interp=yes              \
+            --enable-pythoninterp=yes               \
+            --enable-cscope                         \
+            --srcdir=.                              \
+            --enable-luainterp=yes                  \
+            --cache-file=auto/config.cache          \
 
 ## Installation
 
