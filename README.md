@@ -4,8 +4,17 @@ My Vim configuration
 
 ## Prerequisite
 
-`+ruby +lua` appears in `vim --version`
+`+ruby +lua` should appears in `vim --version`
 
+1. You have to fix lua path with Ubuntu 18.04.
+
+'''
+sudo ln -s /usr/include/lua5.3 /usr/include/lua
+sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/local/lib/liblua.so
+'''
+
+2. Configure and build vim.
+'''
 ./configure --prefix=/home/duswnchl/Package/vim/out \
             --with-features=huge                    \
             --enable-multibyte                      \
@@ -16,6 +25,7 @@ My Vim configuration
             --srcdir=.                              \
             --enable-luainterp=yes                  \
             --cache-file=auto/config.cache          \
+'''
 
 ## Installation
 
