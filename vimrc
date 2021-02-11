@@ -19,12 +19,11 @@ Plugin 'grep.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'shougo/neocomplete.vim'
-"Plugin 'valloric/youcompleteme'
 Plugin 'wincent/command-t'
 Plugin 'wesleyche/srcexpl'
+Plugin 'ajh17/vimcompletesme'
 "" Git helper
-Plugin 'airblade/vim-gitgutter', {'pinned': 1}  " use stable branch 'nvim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 "" Beautify
 Plugin 'itchyny/lightline.vim'
@@ -69,8 +68,8 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
 """"""""""""""""""""""""""""""""""""""""
 "                Grep                  "
 """"""""""""""""""""""""""""""""""""""'"
-if executable('ag')
-    let Grep_Path = '/usr/bin/ag'
+if executable('rg')
+    let Grep_Path = '/usr/bin/rg'
 endif
 
 let Grep_Skip_Files='ChangeLog* tags *.bak *.o *.order *.mm'
@@ -120,21 +119,21 @@ let g:lightline = {
 """"""""""""""""""""""""""""""""""""""""
 "           Compelete hash             "
 """"""""""""""""""""""""""""""""""'"""""
-autocmd FileType bitbake :setlocal iskeyword+=.
-autocmd FileType bitbake :setlocal iskeyword-=_
+"autocmd FileType bitbake :setlocal iskeyword+=.
+"autocmd FileType bitbake :setlocal iskeyword-=_
 
-let g:remoteDict = {
-                     \ 'chromium53': 'ssh://yeonjoo.choi@wish.lge.com:29444/gpro/webos-pro/chromium53',
-                     \ 'appswitching-control-block': 'ssh://yeonjoo.choi@wish.lge.com:29444/we/wall/module/acb'
-                     \ }
+"let g:remoteDict = {
+                     "\ 'chromium53': 'ssh://yeonjoo.choi@wish.lge.com:29444/gpro/webos-pro/chromium53',
+                     "\ 'appswitching-control-block': 'ssh://yeonjoo.choi@wish.lge.com:29444/we/wall/module/acb'
+                     "\ }
 
-function! ReplaceToHash()
-    let l:pathForTags = g:remoteDict[expand("%:t:r")]." submissions/".expand("<cword>")
-    normal daw
-    return split(system("git ls-remote --tags ".pathForTags))[0]
-endfunction
+"function! ReplaceToHash()
+    "let l:pathForTags = g:remoteDict[expand("%:t:r")]." submissions/".expand("<cword>")
+    "normal daw
+    "return split(system("git ls-remote --tags ".pathForTags))[0]
+"endfunction
 
-nmap <silent> <Leader>ch "=ReplaceToHash()<CR>P
+"nmap <silent> <Leader>ch "=ReplaceToHash()<CR>P
 
 """"""""""""""""""""""""""""""""""""""""
 "       Vim like a source insight      "
