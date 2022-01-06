@@ -12,16 +12,21 @@ Plugin 'VundleVim/Vundle.vim'
 
 " My Bundles here:
 "" IDE
-Plugin 'a.vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'grep.vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'jreybert/vimagit'
 Plugin 'majutsushi/tagbar'
+Plugin 'puremourning/vimspector'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'valloric/youcompleteme'
 Plugin 'wincent/command-t'
-Plugin 'wesleyche/srcexpl'
-Plugin 'ajh17/vimcompletesme'
+Plugin 'yegappan/grep'
+"" UML
+Plugin 'aklt/plantuml-syntax'
+Plugin 'tyru/open-browser.vim'
+Plugin 'weirongxu/plantuml-previewer.vim'
 "" Git helper
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -30,6 +35,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'jacoborus/tender.vim'
 "" Convinience
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -65,17 +71,14 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>"
 " AutoClose for html
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
 
+" To preview markdown
+let vim_markdown_preview_github=1
+
 """"""""""""""""""""""""""""""""""""""""
 "                Grep                  "
 """"""""""""""""""""""""""""""""""""""'"
-if executable('rg')
-    let Grep_Path = '/usr/bin/rg'
-endif
-
-let Grep_Skip_Files='ChangeLog* tags *.bak *.o *.order *.mm'
-
 " Search a word under the cursor
-nmap <C-G> yiw:Rgrep <C-R>"<CR>
+nmap <C-G> yiw:Rg <C-R>"<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 "              Command-t               "
@@ -87,14 +90,29 @@ let g:CommandTFileScanner = 'git'
 let g:CommandTMaxCachedDirectories = 0
 
 """"""""""""""""""""""""""""""""""""""""
-"            AutoComplete              "
+"            NerdCommenter             "
 """"""""""""""""""""""""""""""""""""""'"
-let g:neocomplete#enable_at_startup = 1
+let g:NERDCustomDelimiters = {
+            \ 'vim': { 'left': '"' },
+            \ }
 
 """"""""""""""""""""""""""""""""""""""""
 "     Switch between source/header     "
 """"""""""""""""""""""""""""""""""""""'"
-map <C-A> :A<CR>
+function! HeaderToggle()
+    let filename = expand("%:t")
+    if filename =~ ".cc" || filename =~ ".cpp"
+        execute "e %:r.h"
+    else
+        if !empty(glob("%:r.cc"))
+            execute "e %:r.cc"
+        else
+            execute "e %:r.cpp"
+        endif
+    endif
+endfunction
+
+nnoremap <C-A> :call HeaderToggle()<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 "              lightline               "
@@ -117,42 +135,17 @@ let g:lightline = {
                     \ }
 
 """"""""""""""""""""""""""""""""""""""""
-"           Compelete hash             "
+"              Vim IDE                 "
 """"""""""""""""""""""""""""""""""'"""""
-"autocmd FileType bitbake :setlocal iskeyword+=.
-"autocmd FileType bitbake :setlocal iskeyword-=_
-
-"let g:remoteDict = {
-                     "\ 'chromium53': 'ssh://yeonjoo.choi@wish.lge.com:29444/gpro/webos-pro/chromium53',
-                     "\ 'appswitching-control-block': 'ssh://yeonjoo.choi@wish.lge.com:29444/we/wall/module/acb'
-                     "\ }
-
-"function! ReplaceToHash()
-    "let l:pathForTags = g:remoteDict[expand("%:t:r")]." submissions/".expand("<cword>")
-    "normal daw
-    "return split(system("git ls-remote --tags ".pathForTags))[0]
-"endfunction
-
-"nmap <silent> <Leader>ch "=ReplaceToHash()<CR>P
-
-""""""""""""""""""""""""""""""""""""""""
-"       Vim like a source insight      "
-""""""""""""""""""""""""""""""""""'"""""
-nmap <F6> :TagbarToggle<CR>
-let g:tagbar_width = 80
-
-nmap <F8> :SrcExplToggle<CR>
 nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
-let g:SrcExpl_winHeight = 15
-let g:SrcExpl_refreshTime = 100
-let g:SrcExpl_isUpdateTags = 0
 
-let g:SrcExpl_jumpKey = "<ENTER>"
-let g:SrcExpl_gobackKey = "<SPACE>"
-map <F2> :tnext^M
-map <F3> :tprevious^M
+nmap <Leader>r :TagbarToggle<CR>
+let g:tagbar_width = 80
+
+" vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
 
 syntax on
