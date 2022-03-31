@@ -147,5 +147,18 @@ let g:tagbar_width = 80
 
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
+nmap <Leader>db <Plug>VimspectorBreakpoints
+nmap <Leader>dv <Plug>VimspectorStepOver
+nmap <Leader>di <Plug>VimspectorStepInto
+nmap <Leader>do <Plug>VimspectorStepOut
+
+" ycm
+let g:ycm_clangd_uses_ycmd_caching = 0
+let g:ycm_clangd_binary_path = exepath("clangd")
+
+nmap <leader>yh :YcmCompleter GoToInclude<CR>
+nmap <leader>yl :YcmCompleter GoToDeclaration<CR>
+nmap <leader>yd :YcmCompleter GoTo<CR>
+nmap <leader>yr :YcmCompleter GoToReferences<CR>
 
 syntax on

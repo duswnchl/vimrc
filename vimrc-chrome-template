@@ -17,11 +17,6 @@ let g:NERDCustomDelimiters = {
 let g:ycm_extra_conf_globlist = ['../.ycm_extra_conf.py']
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
 
-nmap <leader>yh :YcmCompleter GoToInclude<CR>
-nmap <leader>yl :YcmCompleter GoToDeclaration<CR>
-nmap <leader>yd :YcmCompleter GoTo<CR>
-nmap <leader>yr :YcmCompleter GoToReferences<CR>
-
 "TODO: recursive, auto gen
 exec 'source '.chtool_path.'/vim/clang-format.vim'
 exec 'source '.chtool_path.'/vim/filetypes.vim'
