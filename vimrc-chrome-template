@@ -1,23 +1,24 @@
 let chtool_path=getcwd().'/tools'
 
 filetype off
+" Load vim scripts under tools/vim
 let &rtp.=','.chtool_path.'/vim/mojom'
+exec 'source' chtool_path.'/vim/filetypes.vim'
+exec 'source' chtool_path.'/vim/ninja-build.vim'
 filetype plugin indent on
 
 set tabstop=2
 set shiftwidth=2
 set colorcolumn=80
 
-"TODO: let extend(g:NERDCustomDelimiters, {'mojom': {'left': '//'}})
+" See tools/vim/chromium.ycm_extra_conf.py
+let g:ycm_extra_conf_globlist = ['../.ycm_extra_conf.py']
+let g:ycm_goto_buffer_command = 'split-or-existing-window'
+
 let g:NERDCustomDelimiters = {
             \ 'vim': { 'left': '"' },
             \ 'mojom': {'left': '//'}
             \ }
 
-let g:ycm_extra_conf_globlist = ['../.ycm_extra_conf.py']
-let g:ycm_goto_buffer_command = 'split-or-existing-window'
-
-"TODO: recursive, auto gen
-exec 'source '.chtool_path.'/vim/clang-format.vim'
-exec 'source '.chtool_path.'/vim/filetypes.vim'
-exec 'source '.chtool_path.'/vim/ninja-build.vim'
+map <C-I> :FormatLines<CR>
+map <C-T> :exe '!tools/autotest.py -C out/Default % --line' shellescape(line('.'))<CR>

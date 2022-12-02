@@ -23,6 +23,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'valloric/youcompleteme'
 Plugin 'wincent/command-t'
 Plugin 'yegappan/grep'
+Plugin 'klen/python-mode'
+"" IDE - chromium
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'https://gn.googlesource.com/gn', { 'rtp': 'misc/vim' }
 "" UML
 Plugin 'aklt/plantuml-syntax'
 Plugin 'tyru/open-browser.vim'
@@ -52,6 +57,8 @@ set nu
 set title
 set tabstop=4
 set sw=4
+set tw=80
+set fo+=t
 set ic
 set hlsearch
 set expandtab
@@ -74,6 +81,14 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
 " To preview markdown
 let vim_markdown_preview_github=1
 
+" horizontal <-> virtical
+noremap <Leader>fvh <C-w>K
+noremap <Leader>fhv <C-w>H
+
+" CamelCase <-> PascalCase
+command -range PascalToCamel :'<,'>s#_*\(\u\)\(\u*\)#\1\L\2#g
+command -range CamelToPascal :'<,'>s#\(\l\+\l*\)\(\u\)#\U\1_\U\2#g
+
 """"""""""""""""""""""""""""""""""""""""
 "                Grep                  "
 """"""""""""""""""""""""""""""""""""""'"
@@ -83,6 +98,7 @@ nmap <C-G> yiw:Rg <C-R>"<CR>
 """"""""""""""""""""""""""""""""""""""""
 "              Command-t               "
 """"""""""""""""""""""""""""""""""""""'"
+let g:CommandTPreferredImplementation='ruby'
 let g:CommandTMaxFiles = 1000000
 let g:CommandTMaxDepth = 30
 let g:CommandTInputDebounce = 50
