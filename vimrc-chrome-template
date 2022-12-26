@@ -10,10 +10,12 @@ filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set colorcolumn=80
+set completeopt-=preview
 
 " See tools/vim/chromium.ycm_extra_conf.py
 let g:ycm_extra_conf_globlist = ['../.ycm_extra_conf.py']
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
+set completeopt+=popup
 
 let g:NERDCustomDelimiters = {
             \ 'vim': { 'left': '"' },
@@ -21,4 +23,30 @@ let g:NERDCustomDelimiters = {
             \ }
 
 map <C-I> :FormatLines<CR>
-map <C-T> :exe '!tools/autotest.py -C out/Default % --line' shellescape(line('.'))<CR>
+
+pythonx << endpython
+import os, vim
+
+def path_to_build_dir():
+  # Codes from tools/vim/ninja-build.vim.
+  chrome_root = os.path.dirname(vim.current.buffer.name)
+  fingerprints = ['chrome', 'net', 'v8', 'build', 'skia']
+  while chrome_root  and not all(
+      [os.path.isdir(os.path.join(chrome_root , fp)) for fp in fingerprints]):
+    chrome_root = os.path.dirname(chrome_root)
+  sys.path.append(os.path.join(chrome_root, 'tools', 'vim'))
+  from ninja_output import GetNinjaOutputDirectory
+  return GetNinjaOutputDirectory(chrome_root)
+
+def run_test_for_line(linenumb):
+  run_cmd = ' '.join(['!tools/autotest.py', '-C', path_to_build_dir(), '%',
+                      '--line', linenumb] )
+  vim.command(run_cmd)
+endpython
+
+fun! RunTestForCurrentLine()
+  let l:current_line = shellescape(line('.'))
+  pythonx run_test_for_line(vim.eval('l:current_line'))
+endfun
+
+map <C-T> :call RunTestForCurrentLine()<CR>

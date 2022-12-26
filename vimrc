@@ -15,7 +15,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'jreybert/vimagit'
 Plugin 'majutsushi/tagbar'
 Plugin 'puremourning/vimspector'
 Plugin 'scrooloose/nerdcommenter'
@@ -23,10 +22,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'valloric/youcompleteme'
 Plugin 'wincent/command-t'
 Plugin 'yegappan/grep'
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode' - Consider only enable in python dev
 "" IDE - chromium
-Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
+Plugin 'google/vim-maktaba'
 Plugin 'https://gn.googlesource.com/gn', { 'rtp': 'misc/vim' }
 "" UML
 Plugin 'aklt/plantuml-syntax'
@@ -39,8 +38,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jacoborus/tender.vim'
 "" Convinience
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end()
 filetype plugin indent on     " required!
