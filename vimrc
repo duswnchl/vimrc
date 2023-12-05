@@ -19,6 +19,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'puremourning/vimspector'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
 Plugin 'valloric/youcompleteme'
 Plugin 'wincent/command-t'
 Plugin 'yegappan/grep'
@@ -26,6 +27,7 @@ Plugin 'yegappan/grep'
 "" IDE - chromium
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-maktaba'
+Plugin 'google/vim-glaive'
 Plugin 'https://gn.googlesource.com/gn', { 'rtp': 'misc/vim' }
 "" UML
 Plugin 'aklt/plantuml-syntax'
@@ -38,8 +40,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jacoborus/tender.vim'
 "" Convinience
-Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'Lokaltog/vim-easymotion'
+"" Markdown
+Plugin 'godlygeek/tabular'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -87,6 +90,14 @@ noremap <Leader>fhv <C-w>H
 " CamelCase <-> PascalCase
 command -range PascalToCamel :'<,'>s#_*\(\u\)\(\u*\)#\1\L\2#g
 command -range CamelToPascal :'<,'>s#\(\l\+\l*\)\(\u\)#\U\1_\U\2#g
+
+" Code formatting
+call glaive#Install()
+Glaive codefmt google_java_executable='java -jar /home/duswnchl/Packages/google-java-format-1.5-all-deps.jar --aosp'
+map <C-I> :FormatLines<CR>
+
+" UML
+let g:plantuml_previewer#plantuml_jar_path = '/home/duswnchl/Packages/plantuml.jar'
 
 """"""""""""""""""""""""""""""""""""""""
 "                Grep                  "
@@ -170,9 +181,13 @@ nmap <Leader>do <Plug>VimspectorStepOut
 " ycm
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
+let g:ycm_clangd_args = [ '-header-insertion=never', '-log=verbose', '-pretty' ]
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/youcompleteme/third_party/ycmd/.ycm_extra_conf.py"
+let g:syntastic_java_checkers = []
 
 nmap <leader>yh :YcmCompleter GoToInclude<CR>
 nmap <leader>yl :YcmCompleter GoToDeclaration<CR>
+nmap <leader>yi :YcmCompleter GoToImplementation<CR>
 nmap <leader>yd :YcmCompleter GoTo<CR>
 nmap <leader>yr :YcmCompleter GoToReferences<CR>
 
