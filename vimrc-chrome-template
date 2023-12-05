@@ -13,6 +13,9 @@ set colorcolumn=80
 set completeopt-=preview
 
 " See tools/vim/chromium.ycm_extra_conf.py
+" Don't forget:
+"   1) ln -rs tools/vim/chromium.ycm_extra_conf.py ../.ycm_extra_conf.py
+"   2) Add an item in ~/.config/clangd/config.yaml for chromium-remote-index
 let g:ycm_extra_conf_globlist = ['../.ycm_extra_conf.py']
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
 set completeopt+=popup
