@@ -42,6 +42,7 @@ Plugin 'jacoborus/tender.vim'
 "" Convinience
 Plugin 'Lokaltog/vim-easymotion'
 "" Markdown
+Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'godlygeek/tabular'
 
 call vundle#end()

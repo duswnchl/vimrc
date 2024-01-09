@@ -4,21 +4,14 @@ My Vim configuration
 
 ## Prerequisite
 
-`+ruby +lua` should appears in `vim --version`
+`+ruby +python3` should appears in `vim --version`
 
-1. If You have trouble with lua,
-```
-sudo ln -s /usr/include/lua5.3 /usr/include/lua
-sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/local/lib/liblua.so
-```
-1. Configure and build vim.
+Please configure and build vim before install vimrc.
 ```
 ./configure --with-features=huge                    \
             --enable-multibyte                      \
-            --enable-rubyinterp=yes                 \
-            --enable-python3interp=yes              \
-            --enable-pythoninterp=yes               \
-            --enable-luainterp=yes                  \
+            --enable-rubyinterp                     \
+            --enable-python3interp                  \
             --enable-cscope                         \
             --srcdir=.                              \
 ```
@@ -39,4 +32,3 @@ sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/local/lib/liblua.so
 ## Additional
 
 * [vimawesome](https://vimawesome.com/)
-* [Watchman](https://facebook.github.io/watchman/)
