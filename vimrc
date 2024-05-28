@@ -29,8 +29,9 @@ Plugin 'google/vim-codefmt'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-glaive'
 Plugin 'https://gn.googlesource.com/gn', { 'rtp': 'misc/vim' }
-"" UML
+"" UML/Markdown
 Plugin 'aklt/plantuml-syntax'
+Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'tyru/open-browser.vim'
 Plugin 'weirongxu/plantuml-previewer.vim'
 "" Git helper
@@ -41,9 +42,6 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'jacoborus/tender.vim'
 "" Convinience
 Plugin 'Lokaltog/vim-easymotion'
-"" Markdown
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'godlygeek/tabular'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -81,9 +79,6 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>"
 " AutoClose for html
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
 
-" To preview markdown
-let vim_markdown_preview_github=1
-
 " horizontal <-> virtical
 noremap <Leader>fvh <C-w>K
 noremap <Leader>fhv <C-w>H
@@ -97,8 +92,12 @@ call glaive#Install()
 Glaive codefmt google_java_executable='java -jar /home/duswnchl/Packages/google-java-format-1.5-all-deps.jar --aosp'
 map <C-I> :FormatLines<CR>
 
-" UML
-let g:plantuml_previewer#plantuml_jar_path = '/home/duswnchl/Packages/plantuml.jar'
+""""""""""""""""""""""""""""""""""""""""
+"            UML/Markdown              "
+""""""""""""""""""""""""""""""""""""""'"
+let g:mkdp_theme = 'dark'
+let g:mkdp_filetypes = ['markdown']
+"let g:plantuml_previewer#plantuml_jar_path = '/home/duswnchl/Packages/plantuml.jar'
 
 """"""""""""""""""""""""""""""""""""""""
 "                Grep                  "

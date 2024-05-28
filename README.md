@@ -4,15 +4,14 @@ My Vim configuration
 
 ## Prerequisite
 
-`+ruby +python3` should appears in `vim --version`
+`+ruby +python3` should appears in `vim --version`.
+- ruby: command-t
+- python3: YouCompleteMe
 
 Please configure and build vim before install vimrc.
 ```
-./configure --with-features=huge                    \
-            --enable-multibyte                      \
-            --enable-rubyinterp                     \
+./configure --enable-rubyinterp                     \
             --enable-python3interp                  \
-            --enable-cscope                         \
             --srcdir=.                              \
 ```
 
@@ -24,10 +23,8 @@ Please configure and build vim before install vimrc.
         $ ln -s $HOME/Packages/vimrc/vimrc ~/.vimrc
     ```
 1. Set up [Vundle](https://github.com/gmarik/Vundle.vim)
-1. Install plugin with Vundle: `:PluginInstall`
+1. Install [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
 1. Install [command-t](https://github.com/wincent/Command-T)
-
-## TODO
 
 ## Additional
 
