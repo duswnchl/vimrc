@@ -21,8 +21,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'valloric/youcompleteme'
-Plugin 'wincent/command-t'
-Plugin 'yegappan/grep'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 " Plugin 'klen/python-mode' - Consider only enable in python dev
 "" IDE - chromium
 Plugin 'google/vim-codefmt'
@@ -104,16 +104,18 @@ let g:mkdp_filetypes = ['markdown']
 """"""""""""""""""""""""""""""""""""""'"
 " Search a word under the cursor
 nmap <C-G> yiw:Rg <C-R>"<CR>
+nmap <C-G>d yiw:RgDir <C-R>"
 
 """"""""""""""""""""""""""""""""""""""""
-"              Command-t               "
+"                FZF                   "
 """"""""""""""""""""""""""""""""""""""'"
-let g:CommandTPreferredImplementation='ruby'
-let g:CommandTMaxFiles = 1000000
-let g:CommandTMaxDepth = 30
-let g:CommandTInputDebounce = 50
-let g:CommandTFileScanner = 'git'
-let g:CommandTMaxCachedDirectories = 0
+map <Leader>t :GFiles<CR>
+map <Leader>b :Buffers<CR>
+
+command! -bang -nargs=* -complete=dir RgDir
+            \ call fzf#vim#grep(
+            \   "rg --column --line-number --no-heading --color=always --smart-case -- ".<q-args>,
+            \   <bang>0)
 
 """"""""""""""""""""""""""""""""""""""""
 "            NerdCommenter             "
