@@ -4,14 +4,12 @@ My Vim configuration
 
 ## Prerequisite
 
-`+ruby +python3` should appears in `vim --version`.
-- ruby: command-t
+`+python3` should appears in `vim --version`.
 - python3: YouCompleteMe
 
 Please configure and build vim before install vimrc.
 ```
-./configure --enable-rubyinterp                     \
-            --enable-python3interp                  \
+./configure --enable-python3interp                  \
             --srcdir=.                              \
 ```
 

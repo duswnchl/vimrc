@@ -23,6 +23,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'valloric/youcompleteme'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'tpope/vim-liquid'
 " Plugin 'klen/python-mode' - Consider only enable in python dev
 "" IDE - chromium
 Plugin 'google/vim-codefmt'
@@ -56,9 +57,6 @@ filetype plugin indent on     " required!
 
 set nu
 set title
-set tabstop=4
-set sw=4
-set tw=80
 set fo+=t
 set ic
 set hlsearch
@@ -66,6 +64,19 @@ set expandtab
 set modifiable
 set exrc
 set secure
+
+" Default
+set tabstop=2
+set shiftwidth=2
+set textwidth=80
+set colorcolumn=80
+set list
+set listchars=multispace:┊
+
+au FileType java,xml setlocal tabstop=4
+au FileType java,xml setlocal shiftwidth=4
+au FileType java setlocal textwidth=100
+au FileType java setlocal colorcolumn=100
 
 " Color Scheme
 set t_Co=256
@@ -88,9 +99,9 @@ command -range PascalToCamel :'<,'>s#_*\(\u\)\(\u*\)#\1\L\2#g
 command -range CamelToPascal :'<,'>s#\(\l\+\l*\)\(\u\)#\U\1_\U\2#g
 
 " Code formatting
-call glaive#Install()
-Glaive codefmt google_java_executable='java -jar /home/duswnchl/Packages/google-java-format-1.5-all-deps.jar --aosp'
-map <C-I> :FormatLines<CR>
+"call glaive#Install()
+"Glaive codefmt google_java_executable='java -jar /home/duswnchl/Packages/google-java-format-1.26.0-all-deps.jar --aosp'
+"map <C-I> :FormatLines<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 "            UML/Markdown              "
@@ -183,9 +194,13 @@ nmap <Leader>do <Plug>VimspectorStepOut
 " ycm
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
-let g:ycm_clangd_args = [ '-header-insertion=never', '-log=verbose', '-pretty' ]
-let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/youcompleteme/third_party/ycmd/.ycm_extra_conf.py"
-let g:syntastic_java_checkers = []
+let g:ycm_clangd_args = [
+      \  '-header-insertion=never',
+      \  '-log=verbose',
+      \  '-pretty',
+      \  '--background-index',
+      \  '-j=4'
+      \ ]
 
 nmap <leader>yh :YcmCompleter GoToInclude<CR>
 nmap <leader>yl :YcmCompleter GoToDeclaration<CR>
