@@ -70,8 +70,7 @@ set tabstop=2
 set shiftwidth=2
 set textwidth=80
 set colorcolumn=80
-set list
-set listchars=multispace:┊
+set clipboard=unnamedplus
 
 au FileType java,xml setlocal tabstop=4
 au FileType java,xml setlocal shiftwidth=4

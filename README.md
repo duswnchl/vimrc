@@ -4,25 +4,22 @@ My Vim configuration
 
 ## Prerequisite
 
-`+python3` should appears in `vim --version`.
-- python3: YouCompleteMe
+- `+python3` and `+clipboard` should appear in `vim --version`.
 
-Please configure and build vim before install vimrc.
+Please install `vim-gtk3`.
 ```
-./configure --enable-python3interp                  \
-            --srcdir=.                              \
+$ sudo apt install vim-gtk3
 ```
 
 ## Installation
 
 1. Set up vimrc with symbolic link:
     ```
-        $ git clone https://github.com/duswnchl/vimrc.git ~/Packages
-        $ ln -s $HOME/Packages/vimrc/vimrc ~/.vimrc
+        $ git clone https://github.com/duswnchl/vimrc.git ~/Apps
+        $ ln -s $HOME/Apps/vimrc/vimrc ~/.vimrc
     ```
 1. Set up [Vundle](https://github.com/gmarik/Vundle.vim)
 1. Install [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
-1. Install [command-t](https://github.com/wincent/Command-T)
 
 ## Additional
 
