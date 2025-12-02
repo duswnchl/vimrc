@@ -15,7 +15,6 @@ set completeopt-=preview
 "   1) ln -rs tools/vim/chromium.ycm_extra_conf.py ../.ycm_extra_conf.py
 "   2) Add an item in ~/.config/clangd/config.yaml for chromium-remote-index
 set completeopt+=popup
-let $CHROMIUM_BUILD_DIR = getcwd()..'/out/Default'
 "let $CLANG_PATH = "third_party/llvm-build/Release+Asserts/bin/clangd"
 let g:ycm_extra_conf_globlist = ['../.ycm_extra_conf.py']
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
@@ -52,3 +51,6 @@ fun! RunTestForCurrentLine()
 endfun
 
 map <C-T> :call RunTestForCurrentLine()<CR>
+
+let build_dir = pyxeval('path_to_build_dir()')
+let $CHROMIUM_BUILD_DIR = build_dir
