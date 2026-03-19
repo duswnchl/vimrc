@@ -4,57 +4,52 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-
-" My Bundles here:
+" My plugins here:
 "" IDE
-Plugin 'alvan/vim-closetag'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'majutsushi/tagbar'
-Plugin 'puremourning/vimspector'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'valloric/youcompleteme'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'tpope/vim-liquid'
-" Plugin 'klen/python-mode' - Consider only enable in python dev
+Plug 'alvan/vim-closetag'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'jiangmiao/auto-pairs'
+Plug 'majutsushi/tagbar'
+Plug 'puremourning/vimspector'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'valloric/youcompleteme', { 'do': 'python3 install.py --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-liquid'
+" Plug 'klen/python-mode' - Consider only enable in python dev
 "" IDE - chromium
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-glaive'
-Plugin 'https://gn.googlesource.com/gn', { 'rtp': 'misc/vim' }
-Plugin 'https://github.com/kalcutter/vim-gn'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-glaive'
+Plug 'https://gn.googlesource.com/gn', { 'rtp': 'misc/vim' }
+Plug 'https://github.com/kalcutter/vim-gn'
 "" UML/Markdown
-Plugin 'aklt/plantuml-syntax'
-Plugin 'iamcco/markdown-preview.nvim'
-Plugin 'tyru/open-browser.vim'
-Plugin 'weirongxu/plantuml-previewer.vim'
+Plug 'aklt/plantuml-syntax'
+Plug 'iamcco/markdown-preview.nvim'
+Plug 'tyru/open-browser.vim'
+Plug 'weirongxu/plantuml-previewer.vim'
 "" Git helper
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 "" Beautify
-Plugin 'itchyny/lightline.vim'
-Plugin 'jacoborus/tender.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'jacoborus/tender.vim'
 "" Convinience
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 
-call vundle#end()
+call plug#end()
+
 filetype plugin indent on     " required!
 "
 " Brief help
-" :PluginList          - list configured bundles
-" :PluginInstall(!)    - install(update) bundles
-" :PluginSearch(!) foo - search(or refresh cache first) for foo
-" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
+"   :PlugInstall to install the plugins
+"   :PlugUpdate to install or update the plugins
+"   :PlugDiff to review the changes from the last update
+"   :PlugClean to remove plugins no longer in the list
 
 set nu
 set title
