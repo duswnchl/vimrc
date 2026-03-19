@@ -8,17 +8,23 @@ exec 'source' chtool_path.'/vim/ninja-build.vim'
 exec 'source' chtool_path.'/vim/clang-format.vim'
 filetype plugin indent on
 
-set completeopt-=preview
-
 " See tools/vim/chromium.ycm_extra_conf.py
 " Don't forget:
 "   1) ln -rs tools/vim/chromium.ycm_extra_conf.py ../.ycm_extra_conf.py
 "   2) Add an item in ~/.config/clangd/config.yaml for chromium-remote-index
-set completeopt+=popup
+set completeopt+=popup,preview,menuone
 "let $CLANG_PATH = "third_party/llvm-build/Release+Asserts/bin/clangd"
 let g:ycm_extra_conf_globlist = ['../.ycm_extra_conf.py']
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
 "let g:ycm_clangd_binary_path = exepath($CLANG_PATH)
+
+let g:ycm_language_server = [
+      \ {
+      \   'name': 'gn',
+      \   'cmdline': [ 'gn-language-server' ],
+      \   'filetypes': [ 'gn' ],
+      \ }
+  \ ]
 
 let g:NERDCustomDelimiters = {
             \ 'vim': { 'left': '"' },
@@ -52,5 +58,5 @@ endfun
 
 map <C-T> :call RunTestForCurrentLine()<CR>
 
-let build_dir = pyxeval('path_to_build_dir()')
-let $CHROMIUM_BUILD_DIR = build_dir
+"let build_dir = pyxeval('path_to_build_dir()')
+"let $CHROMIUM_BUILD_DIR = build_dir

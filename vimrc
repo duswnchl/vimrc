@@ -30,6 +30,7 @@ Plugin 'google/vim-codefmt'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-glaive'
 Plugin 'https://gn.googlesource.com/gn', { 'rtp': 'misc/vim' }
+Plugin 'https://github.com/kalcutter/vim-gn'
 "" UML/Markdown
 Plugin 'aklt/plantuml-syntax'
 Plugin 'iamcco/markdown-preview.nvim'
@@ -64,6 +65,7 @@ set expandtab
 set modifiable
 set exrc
 set secure
+set spell
 
 " Default
 set tabstop=2
@@ -97,12 +99,14 @@ noremap <Leader>fhv <C-w>H
 command -range PascalToCamel :'<,'>s#_*\(\u\)\(\u*\)#\1\L\2#g
 command -range CamelToPascal :'<,'>s#\(\l\+\l*\)\(\u\)#\U\1_\U\2#g
 
-" Code formatting
+""""""""""""""""""""""""""""""""""""""""
+"           Code formatting            "
+""""""""""""""""""""""""""""""""""""""'"
 "call glaive#Install()
 "Glaive codefmt google_java_executable='java -jar /home/duswnchl/Packages/google-java-format-1.26.0-all-deps.jar --aosp'
 "map <C-I> :FormatLines<CR>
 
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 "            UML/Markdown              "
 """"""""""""""""""""""""""""""""""""""'"
 let g:mkdp_theme = 'dark'
@@ -194,7 +198,7 @@ nmap <Leader>do <Plug>VimspectorStepOut
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 let g:ycm_clangd_args = [
-      \  '-header-insertion=never',
+      "\  '-header-insertion=never',
       \  '-log=verbose',
       \  '-pretty',
       \  '--background-index',
@@ -206,5 +210,11 @@ nmap <leader>yl :YcmCompleter GoToDeclaration<CR>
 nmap <leader>yi :YcmCompleter GoToImplementation<CR>
 nmap <leader>yd :YcmCompleter GoTo<CR>
 nmap <leader>yr :YcmCompleter GoToReferences<CR>
+
+""""""""""""""""""""""""""""""""""""""""
+"            My commends               "
+""""""""""""""""""""""""""""""""""'"""""
+command! CopyFilePath let @+=expand('%')
+command! CopyFileName let @+=expand('%:t')
 
 syntax on
